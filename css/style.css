@@ -106,11 +106,14 @@ img.thumbnail {
 .navbar-main .navbar-item {
   display: flex;
   align-items: center;
-  padding: 0.25rem 0.75rem;
+  padding: 1.25rem 0.75rem;
 }
 .navbar-main .navbar-item.is-active {
   color: #3273dc;
   background-color: transparent;
+}
+.navbar-main .navbar-item.navbar-logo {
+  padding: 0.25rem 0.75rem;
 }
 @media screen and (max-width: 1087px) {
   .navbar-main .navbar-menu {
