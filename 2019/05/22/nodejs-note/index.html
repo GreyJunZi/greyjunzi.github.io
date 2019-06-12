@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="1. 什么是 Node.js？官方说法: Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine. 通俗点说，Node.js 就是一种小型服务器，拥有类似 Java、.NET、PHP">
+    <meta name="description" content="一、什么是 Node.js？官方说法: Node.js®是基于Chrome的V8 JavaScript引擎构建的JavaScript运行时。  Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine.  可以理解为，Node.js 是一种小型服务器，拥有Java、.NET、PHP 等处理后端的能力。">
 <meta name="keywords" content="Node.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node.js 学习笔记">
-<meta property="og:url" content="https://PseudoJunZi.github.io/2019/05/22/nodejs-1/index.html">
+<meta property="og:url" content="https://PseudoJunZi.github.io/2019/05/22/nodejs-note/index.html">
 <meta property="og:site_name" content="PseudoJunZi">
-<meta property="og:description" content="1. 什么是 Node.js？官方说法: Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine. 通俗点说，Node.js 就是一种小型服务器，拥有类似 Java、.NET、PHP">
+<meta property="og:description" content="一、什么是 Node.js？官方说法: Node.js®是基于Chrome的V8 JavaScript引擎构建的JavaScript运行时。  Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine.  可以理解为，Node.js 是一种小型服务器，拥有Java、.NET、PHP 等处理后端的能力。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://pseudojunzi.github.io/gallery/Technology/ProgrammingLanguage/NodeJS/nodejs-dark.png">
-<meta property="og:updated_time" content="2019-06-10T13:25:04.245Z">
+<meta property="og:updated_time" content="2019-06-12T12:22:00.768Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js 学习笔记">
-<meta name="twitter:description" content="1. 什么是 Node.js？官方说法: Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine. 通俗点说，Node.js 就是一种小型服务器，拥有类似 Java、.NET、PHP">
+<meta name="twitter:description" content="一、什么是 Node.js？官方说法: Node.js®是基于Chrome的V8 JavaScript引擎构建的JavaScript运行时。  Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine.  可以理解为，Node.js 是一种小型服务器，拥有Java、.NET、PHP 等处理后端的能力。">
 <meta name="twitter:image" content="https://pseudojunzi.github.io/gallery/Technology/ProgrammingLanguage/NodeJS/nodejs-dark.png">
 
 
@@ -161,7 +161,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 55 个字)
+                    2 分钟 读完 (大约 348 个字)
                 </span>
                 
                 
@@ -174,10 +174,18 @@
             
         </h1>
         <div class="content">
-            <h2 id="1-什么是-Node-js？"><a href="#1-什么是-Node-js？" class="headerlink" title="1. 什么是 Node.js？"></a>1. 什么是 Node.js？</h2><p>官方说法: <strong>Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine.</strong></p>
-<p>通俗点说，Node.js 就是一种小型服务器，拥有类似 Java、.NET、PHP </p>
+            <h2 id="一、什么是-Node-js？"><a href="#一、什么是-Node-js？" class="headerlink" title="一、什么是 Node.js？"></a>一、什么是 Node.js？</h2><p>官方说法: Node.js®是基于Chrome的V8 JavaScript引擎构建的JavaScript运行时。</p>
+<blockquote>
+<p><strong>Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine.</strong></p>
+</blockquote>
+<p>可以理解为，Node.js 是一种小型服务器，拥有Java、.NET、PHP 等处理后端的能力。</p>
 <a id="more"></a>
-<h3 id="1-1-下载与安装"><a href="#1-1-下载与安装" class="headerlink" title="1.1 下载与安装"></a>1.1 下载与安装</h3><h3 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h3>
+<h3 id="1-1-下载与安装"><a href="#1-1-下载与安装" class="headerlink" title="1.1 下载与安装"></a>1.1 下载与安装</h3><p><a href="http://www.nodejs.org" target="_blank" rel="noopener">Node.js官网</a> </p>
+<h3 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h3><h2 id="二、Node-js-入门"><a href="#二、Node-js-入门" class="headerlink" title="二、Node.js 入门"></a>二、Node.js 入门</h2><h3 id="2-1-Hello-World"><a href="#2-1-Hello-World" class="headerlink" title="2.1 Hello World"></a>2.1 Hello World</h3><p>我们首先看一个简单的例子，仅需几行代码就可以开启服务器接受页面请求和响应。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> server = http.createServer();</span><br><span class="line"></span><br><span class="line">server.on(<span class="hljs-string">'request'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">request, response</span>) </span>&#123;</span><br><span class="line">    response.end(<span class="hljs-string">'Hello World!'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="hljs-number">3000</span>);</span><br></pre></td></tr></table></figure>
+<p>上面代码中，我们引入了 http 核心模块，并创建服务器接收请求，开启服务器并监听端口号。页面的显示效果如下。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 1. 使用 require 加载 http 核心模块</span></span><br><span class="line"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 2. 创建 Web服务器</span></span><br><span class="line"><span class="hljs-keyword">var</span> server = http.createServer();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 3. 监听 request 请求事件</span></span><br><span class="line">server.on(<span class="hljs-string">'request'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">request, response</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'收到客户端发送的请求！'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 使用 设置响应头 解决返回数据中文问题</span></span><br><span class="line">    response.setHeader(<span class="hljs-string">'Content-Type'</span>, <span class="hljs-string">'text/plain; charset=utf-8'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// response 响应客户端发送的请求</span></span><br><span class="line">    response.write(<span class="hljs-string">'Hello World!'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 结束响应</span></span><br><span class="line">    response.end();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 4. 监听端口，启动服务</span></span><br><span class="line">server.listen(<span class="hljs-number">3000</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'服务器启动成功！'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="三、Node-js-进阶"><a href="#三、Node-js-进阶" class="headerlink" title="三、Node.js 进阶"></a>三、Node.js 进阶</h2><h2 id="四、Node-js-高级"><a href="#四、Node-js-高级" class="headerlink" title="四、Node.js 高级"></a>四、Node.js 高级</h2><h2 id="五、Node-js-实战"><a href="#五、Node-js-实战" class="headerlink" title="五、Node.js 实战"></a>五、Node.js 实战</h2><h2 id="六、Node-js"><a href="#六、Node-js" class="headerlink" title="六、Node.js"></a>六、Node.js</h2>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -278,7 +286,7 @@
     var gitalk = new Gitalk({
         clientID: '371e478923bff82fb6c6',
         clientSecret: '37a842f76f41c3c2bf6969122217740abadb3680',
-        id: '0052af3bba61691cff58cfc296dc8ca6',
+        id: '3229a10e705f4d238b0294ad27592e45',
         repo: 'https://github.com/PseudoJunZi/PseudoJunZi.github.io.git',
         owner: 'PseudoJunZi',
         admin: ["PseudoJunZi"]
@@ -509,7 +517,7 @@
         
         <article class="media">
             
-            <a href="/2019/05/22/nodejs-1/" class="media-left">
+            <a href="/2019/05/22/nodejs-note/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/gallery/Technology/ProgrammingLanguage/NodeJS/nodejs-dark.png" alt="Node.js 学习笔记">
                 </p>
@@ -518,7 +526,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-22T14:17:41.000Z">2019-05-22</time></div>
-                    <a href="/2019/05/22/nodejs-1/" class="has-link-black-ter is-size-6">Node.js 学习笔记</a>
+                    <a href="/2019/05/22/nodejs-note/" class="has-link-black-ter is-size-6">Node.js 学习笔记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/前端/">前端</a>
                     </p>
@@ -702,7 +710,7 @@
         
         <article class="media">
             
-            <a href="/2019/05/22/nodejs-1/" class="media-left">
+            <a href="/2019/05/22/nodejs-note/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/gallery/Technology/ProgrammingLanguage/NodeJS/nodejs-dark.png" alt="Node.js 学习笔记">
                 </p>
@@ -711,7 +719,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-22T14:17:41.000Z">2019-05-22</time></div>
-                    <a href="/2019/05/22/nodejs-1/" class="has-link-black-ter is-size-6">Node.js 学习笔记</a>
+                    <a href="/2019/05/22/nodejs-note/" class="has-link-black-ter is-size-6">Node.js 学习笔记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/前端/">前端</a>
                     </p>
