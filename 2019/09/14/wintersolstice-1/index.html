@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="什么是冬至？冬至 是一个基于 .NET Core 平台的开源项目，其目标是构建一个简单易用的模块化的高性能分布式系统。 项目架构采用全新技术栈，遵循领域驱动设计(Domain-Driven Design,DDD)规范并结合命令查询职责分离(CQRS)架构实现事件驱动、事件溯源等特性。 集成多数据库与多ORM自由平滑切换及组合使用，支持多语言切换与前端多主题切换。">
-<meta name="keywords" content=".NET Core,DDD,CQRS">
+    <meta name="description" content="什么是冬至？冬至 是一个基于 .NET Core 平台的开源项目，其目标是构建一个简单易用的模块化的高性能分布式系统。 项目架构采用全新技术栈，遵循领域驱动设计(Domain-Driven Design,DDD)规范并结合命令查询职责分离(CQRS)架构实现事件驱动(Event-Driven Architecture,EDA)、事件溯源(Event Sourcing,ES)等特性。">
+<meta name="keywords" content=".NET Core,DDD,CQRS,TDD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="冬至（一）">
 <meta property="og:url" content="https://PseudoJunZi.github.io/2019/09/14/wintersolstice-1/index.html">
 <meta property="og:site_name" content="PseudoJunZi">
-<meta property="og:description" content="什么是冬至？冬至 是一个基于 .NET Core 平台的开源项目，其目标是构建一个简单易用的模块化的高性能分布式系统。 项目架构采用全新技术栈，遵循领域驱动设计(Domain-Driven Design,DDD)规范并结合命令查询职责分离(CQRS)架构实现事件驱动、事件溯源等特性。 集成多数据库与多ORM自由平滑切换及组合使用，支持多语言切换与前端多主题切换。">
+<meta property="og:description" content="什么是冬至？冬至 是一个基于 .NET Core 平台的开源项目，其目标是构建一个简单易用的模块化的高性能分布式系统。 项目架构采用全新技术栈，遵循领域驱动设计(Domain-Driven Design,DDD)规范并结合命令查询职责分离(CQRS)架构实现事件驱动(Event-Driven Architecture,EDA)、事件溯源(Event Sourcing,ES)等特性。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://pseudojunzi.github.io/gallery/Blog/wintersolstice-1/winter.jpg">
-<meta property="og:updated_time" content="2019-09-14T04:18:42.714Z">
+<meta property="og:updated_time" content="2019-09-26T23:42:32.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="冬至（一）">
-<meta name="twitter:description" content="什么是冬至？冬至 是一个基于 .NET Core 平台的开源项目，其目标是构建一个简单易用的模块化的高性能分布式系统。 项目架构采用全新技术栈，遵循领域驱动设计(Domain-Driven Design,DDD)规范并结合命令查询职责分离(CQRS)架构实现事件驱动、事件溯源等特性。 集成多数据库与多ORM自由平滑切换及组合使用，支持多语言切换与前端多主题切换。">
+<meta name="twitter:description" content="什么是冬至？冬至 是一个基于 .NET Core 平台的开源项目，其目标是构建一个简单易用的模块化的高性能分布式系统。 项目架构采用全新技术栈，遵循领域驱动设计(Domain-Driven Design,DDD)规范并结合命令查询职责分离(CQRS)架构实现事件驱动(Event-Driven Architecture,EDA)、事件溯源(Event Sourcing,ES)等特性。">
 <meta name="twitter:image" content="https://pseudojunzi.github.io/gallery/Blog/wintersolstice-1/winter.jpg">
 
 
@@ -161,7 +161,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 651 个字)
+                    6 分钟 读完 (大约 855 个字)
                 </span>
                 
                 
@@ -175,10 +175,52 @@
         </h1>
         <div class="content">
             <h3 id="什么是冬至？"><a href="#什么是冬至？" class="headerlink" title="什么是冬至？"></a>什么是冬至？</h3><p><strong>冬至</strong> 是一个基于 .NET Core 平台的开源项目，其目标是构建一个简单易用的模块化的高性能分布式系统。</p>
-<p>项目架构采用全新技术栈，遵循领域驱动设计(Domain-Driven Design,DDD)规范并结合命令查询职责分离(CQRS)架构实现事件驱动、事件溯源等特性。</p>
-<p>集成多数据库与多ORM自由平滑切换及组合使用，支持多语言切换与前端多主题切换。</p>
+<p>项目架构采用全新技术栈，遵循领域驱动设计(Domain-Driven Design,DDD)规范并结合命令查询职责分离(CQRS)架构实现事件驱动(Event-Driven Architecture,EDA)、事件溯源(Event Sourcing,ES)等特性。</p>
 <a id="more"></a>
+<p>集成多数据库与多ORM自由平滑切换及组合使用，支持多语言切换与前端多主题切换。</p>
+<p>加入消息队列，分布式缓存以提高系统性能。</p>
+<p>加入基于分布式的全文搜索引擎(ElasticSearch)提高搜索海量数据的查询效率，并搭配 Kibana 实现可视化管理和数据分析。</p>
+<p>使用 RESTFul API 风格开发 Web API。</p>
+<p>使用测试驱动开发(Test-Driven Development, TDD)方式，设计高内聚低耦合代码，降低维护成本。</p>
+<p>使用流畅接口(Fluent Interface)风格编写链式代码。</p>
+<p>将程序部署在Docker中并发布至不同系统中。</p>
 <h3 id="冬至名称的由来？"><a href="#冬至名称的由来？" class="headerlink" title="冬至名称的由来？"></a>冬至名称的由来？</h3><p><strong>冬至</strong> 为中国二十四节气中的第二十二个节气，中国古代对冬至很重视，被视为冬季的大节日。冬至在古代称之为 <strong>“亚岁”</strong></p>
+<h3 id="使用技术栈"><a href="#使用技术栈" class="headerlink" title="使用技术栈"></a>使用技术栈</h3><ul>
+<li>应用框架<ul>
+<li>ASP.NET Core 3.0</li>
+<li>ASP.NET Core WebAPI</li>
+<li>Blazor</li>
+<li>gRPC</li>
+</ul>
+</li>
+<li>数据库<ul>
+<li>Microsoft SQL Server</li>
+<li>Oracle</li>
+<li>MySQL</li>
+<li>PostgreSQL</li>
+<li>MongoDB</li>
+</ul>
+</li>
+<li>缓存<ul>
+<li>Redis</li>
+</ul>
+</li>
+<li>消息队列<ul>
+<li>RabbitMQ</li>
+</ul>
+</li>
+<li>定时任务<ul>
+<li>Quartz.NET</li>
+<li>Hangfire</li>
+</ul>
+</li>
+<li>前端框架<ul>
+<li>React</li>
+<li>Vue</li>
+<li>Angular</li>
+</ul>
+</li>
+</ul>
 <h3 id="参考开源项目"><a href="#参考开源项目" class="headerlink" title="参考开源项目"></a>参考开源项目</h3><ul>
 <li><a href="https://github.com/nopSolutions/nopCommerce" target="_blank" rel="noopener">NopCommerce</a></li>
 <li><a href="https://github.com/simplcommerce/SimplCommerce" target="_blank" rel="noopener">SimplCommerce</a></li>
@@ -189,7 +231,7 @@
 <li><a href="https://github.com/OrchardCMS/OrchardCore" target="_blank" rel="noopener">OrchardCore</a></li>
 <li><a href="https://github.com/lucabriguglia/Weapsy" target="_blank" rel="noopener">Weapsy</a></li>
 </ul>
-<h3 id="官方参考书籍"><a href="#官方参考书籍" class="headerlink" title="官方参考书籍"></a>官方参考书籍</h3><ul>
+<h3 id="官方推荐参考书籍"><a href="#官方推荐参考书籍" class="headerlink" title="官方推荐参考书籍"></a>官方推荐参考书籍</h3><ul>
 <li><p><a href="https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215/" target="_blank" rel="noopener">Eric Evans, Domain-Driven Design:软件核心复杂性应对之道</a></p>
 </li>
 <li><p><a href="https://www.amazon.com/Domain-Driven-Design-Reference-Definitions-2014-09-22/dp/B01N8YB4ZO/" target="_blank" rel="noopener">Eric Evans, 域驱动设计参考：定义和模式摘要</a></p>
@@ -230,7 +272,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/NET-Core/">.NET Core</a>, <a class="has-link-grey -link" href="/tags/CQRS/">CQRS</a>, <a class="has-link-grey -link" href="/tags/DDD/">DDD</a>
+                    <a class="has-link-grey -link" href="/tags/NET-Core/">.NET Core</a>, <a class="has-link-grey -link" href="/tags/CQRS/">CQRS</a>, <a class="has-link-grey -link" href="/tags/DDD/">DDD</a>, <a class="has-link-grey -link" href="/tags/TDD/">TDD</a>
                 </div>
             </div>
         </div>
@@ -397,7 +439,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        12
+                        13
                     </p>
                 </div>
             </div>
@@ -562,7 +604,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/NET/" style="font-size: 10px;">.NET</a> <a href="/tags/NET-Core/" style="font-size: 10px;">.NET Core</a> <a href="/tags/CQRS/" style="font-size: 10px;">CQRS</a> <a href="/tags/DDD/" style="font-size: 10px;">DDD</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React-js/" style="font-size: 10px;">React.js</a> <a href="/tags/人生/" style="font-size: 10px;">人生</a> <a href="/tags/左撇子人生/" style="font-size: 10px;">左撇子人生</a> <a href="/tags/文章收藏/" style="font-size: 10px;">文章收藏</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/网站推荐/" style="font-size: 10px;">网站推荐</a> <a href="/tags/语录收藏/" style="font-size: 10px;">语录收藏</a>
+        <a href="/tags/NET/" style="font-size: 10px;">.NET</a> <a href="/tags/NET-Core/" style="font-size: 10px;">.NET Core</a> <a href="/tags/CQRS/" style="font-size: 10px;">CQRS</a> <a href="/tags/DDD/" style="font-size: 10px;">DDD</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React-js/" style="font-size: 10px;">React.js</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/人生/" style="font-size: 10px;">人生</a> <a href="/tags/左撇子人生/" style="font-size: 10px;">左撇子人生</a> <a href="/tags/文章收藏/" style="font-size: 10px;">文章收藏</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/网站推荐/" style="font-size: 10px;">网站推荐</a> <a href="/tags/语录收藏/" style="font-size: 10px;">语录收藏</a>
     </div>
 </div>
 
@@ -790,6 +832,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/React-js/">
                         <span class="tag">React.js</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TDD/">
+                        <span class="tag">TDD</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1072,6 +1121,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/React-js/">
                         <span class="tag">React.js</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TDD/">
+                        <span class="tag">TDD</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
