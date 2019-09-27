@@ -8,7 +8,7 @@
 
 
     <meta name="description" content="什么是冬至？冬至 是一个基于 .NET Core 平台的开源项目，其目标是构建一个简单易用的模块化的高性能分布式系统。 项目架构采用全新技术栈，遵循领域驱动设计(Domain-Driven Design,DDD)规范并结合命令查询职责分离(CQRS)架构实现事件驱动(Event-Driven Architecture,EDA)、事件溯源(Event Sourcing,ES)等特性。">
-<meta name="keywords" content=".NET Core,ASP.NET Core,Blazor,gRPC,DDD,CQRS,TDD,React,Angular,Vue">
+<meta name="keywords" content="React.js,.NET Core,ASP.NET Core,Blazor,gRPC,DDD,CQRS,TDD,Angular.js,Vue.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="冬至（一）">
 <meta property="og:url" content="https://PseudoJunZi.github.io/2019/09/14/wintersolstice-1/index.html">
@@ -16,7 +16,7 @@
 <meta property="og:description" content="什么是冬至？冬至 是一个基于 .NET Core 平台的开源项目，其目标是构建一个简单易用的模块化的高性能分布式系统。 项目架构采用全新技术栈，遵循领域驱动设计(Domain-Driven Design,DDD)规范并结合命令查询职责分离(CQRS)架构实现事件驱动(Event-Driven Architecture,EDA)、事件溯源(Event Sourcing,ES)等特性。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://pseudojunzi.github.io/gallery/Blog/wintersolstice-1/winter.jpg">
-<meta property="og:updated_time" content="2019-09-26T23:44:01.159Z">
+<meta property="og:updated_time" content="2019-09-27T15:13:04.889Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="冬至（一）">
 <meta name="twitter:description" content="什么是冬至？冬至 是一个基于 .NET Core 平台的开源项目，其目标是构建一个简单易用的模块化的高性能分布式系统。 项目架构采用全新技术栈，遵循领域驱动设计(Domain-Driven Design,DDD)规范并结合命令查询职责分离(CQRS)架构实现事件驱动(Event-Driven Architecture,EDA)、事件溯源(Event Sourcing,ES)等特性。">
@@ -161,7 +161,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 855 个字)
+                    10 分钟 读完 (大约 1452 个字)
                 </span>
                 
                 
@@ -178,14 +178,16 @@
 <p>项目架构采用全新技术栈，遵循领域驱动设计(Domain-Driven Design,DDD)规范并结合命令查询职责分离(CQRS)架构实现事件驱动(Event-Driven Architecture,EDA)、事件溯源(Event Sourcing,ES)等特性。</p>
 <a id="more"></a>
 <p>集成多数据库与多ORM自由平滑切换及组合使用，支持多语言切换与前端多主题切换。</p>
+<p>集成 IdentityServer4 进行身份验证及授权。</p>
 <p>加入消息队列，分布式缓存以提高系统性能。</p>
-<p>加入基于分布式的全文搜索引擎(ElasticSearch)提高搜索海量数据的查询效率，并搭配 Kibana 实现可视化管理和数据分析。</p>
-<p>使用 RESTFul API 风格开发 Web API。</p>
+<p>采用EFK(ElasticSearch, FluentD, Kibana)方案进行日志收集，基于分布式的全文搜索引擎(ElasticSearch)提高搜索海量数据的查询效率，FluentD是日志记录层的数据收集器，并搭配 Kibana 实现可视化管理和数据分析。</p>
+<p>加入Zipkin.NET进行数据跟踪。</p>
+<p>使用 RESTFul API 风格开发 Web API，并配合Swagger进行接口文档在线自动生成及可视化展示。</p>
 <p>使用测试驱动开发(Test-Driven Development, TDD)方式，设计高内聚低耦合代码，降低维护成本。</p>
 <p>使用流畅接口(Fluent Interface)风格编写链式代码。</p>
-<p>将程序部署在Docker中并发布至不同系统中。</p>
+<p>将程序部署至Docker和k8s中。</p>
 <h3 id="冬至名称的由来？"><a href="#冬至名称的由来？" class="headerlink" title="冬至名称的由来？"></a>冬至名称的由来？</h3><p><strong>冬至</strong> 为中国二十四节气中的第二十二个节气，中国古代对冬至很重视，被视为冬季的大节日。冬至在古代称之为 <strong>“亚岁”</strong></p>
-<h3 id="使用技术栈"><a href="#使用技术栈" class="headerlink" title="使用技术栈"></a>使用技术栈</h3><ul>
+<h3 id="使用到的技术栈"><a href="#使用到的技术栈" class="headerlink" title="使用到的技术栈"></a>使用到的技术栈</h3><ul>
 <li>应用框架<ul>
 <li>ASP.NET Core 3.0</li>
 <li>ASP.NET Core WebAPI</li>
@@ -198,30 +200,52 @@
 <li>Oracle</li>
 <li>MySQL</li>
 <li>PostgreSQL</li>
-<li>MongoDB</li>
+<li><a href="https://www.mongodb.com/" target="_blank" rel="noopener">MongoDB</a></li>
+</ul>
+</li>
+<li>对象关系映射<ul>
+<li><a href="https://docs.microsoft.com/ef/core/" target="_blank" rel="noopener">EntityFrameworkCore</a> - 是轻量化、可扩展、开源和跨平台版的常用 Entity Framework 数据访问技术。</li>
+<li><a href="https://stackexchange.github.io/Dapper/" target="_blank" rel="noopener">Dapper</a> - .Net的简单对象映射器</li>
+<li><del>Solstice</del></li>
 </ul>
 </li>
 <li>缓存<ul>
-<li>Redis</li>
+<li><a href="https://redis.io/" target="_blank" rel="noopener">Redis</a> - 是一个开放源代码（BSD许可）的内存中数据结构存储，用作数据库，缓存和消息代理。它支持数据结构，例如字符串，哈希，列表，集合，带范围查询的排序集合，位图，超日志，带有半径查询和流的地理空间索引。Redis具有内置的复制，Lua脚本，LRU逐出，事务和不同级别的磁盘持久性，并通过Redis Sentinel和Redis Cluster自动分区提供了高可用性。</li>
 </ul>
 </li>
 <li>消息队列<ul>
-<li>RabbitMQ</li>
+<li><a href="https://www.rabbitmq.com/" target="_blank" rel="noopener">RabbitMQ</a> - 是部署最广泛的开源消息代理。</li>
 </ul>
 </li>
 <li>定时任务<ul>
-<li>Quartz.NET</li>
-<li>Hangfire</li>
+<li><a href="http://www.quartz-scheduler.net/" target="_blank" rel="noopener">Quartz.NET</a> - 是功能齐全的开源作业调度系统，可用于最小的应用程序到大型企业系统</li>
+<li><a href="https://www.hangfire.io/" target="_blank" rel="noopener">Hangfire</a> - 在.NET和.NET Core应用程序中执行后台处理的一种简便方法。无需Windows服务或单独的过程。</li>
+</ul>
+</li>
+<li>即时通讯<ul>
+<li><a href="https://dotnet.microsoft.com/apps/aspnet/signalr" target="_blank" rel="noopener">SignalR</a> - 适用于ASP.NET的极其简单的实时Web</li>
+<li>WebSocket</li>
+<li><a href="https://github.com/Azure/DotNetty" target="_blank" rel="noopener">DotNetty</a> - Netty端口，事件驱动的异步网络应用程序框架</li>
 </ul>
 </li>
 <li>前端框架<ul>
-<li>React</li>
-<li>Vue</li>
-<li>Angular</li>
+<li><a href="https://reactjs.org/" target="_blank" rel="noopener">React</a> - 一个用于构建用户界面的JavaScript库</li>
+<li><a href="https://vuejs.org/" target="_blank" rel="noopener">Vue</a> - 渐进式JavaScript框架</li>
+<li><a href="https://angular.io/" target="_blank" rel="noopener">Angular</a> - 一个框架，手机和台式机。</li>
+</ul>
+</li>
+<li>故障处理<ul>
+<li><a href="http://www.thepollyproject.org" target="_blank" rel="noopener">Polly</a> - 是一个.NET弹性和瞬态故障处理库，允许开发人员以流畅和线程安全的方式表达诸如重试，断路器，超时，隔离头和回退之类的策略。</li>
+</ul>
+</li>
+<li>应用容器<ul>
+<li><a href="https://www.docker.com/" target="_blank" rel="noopener">Docker</a> - 提供了一种在容器中安全隔离地运行应用程序的方法，该容器及其所有依赖项和库打包在一起。</li>
 </ul>
 </li>
 </ul>
 <h3 id="参考开源项目"><a href="#参考开源项目" class="headerlink" title="参考开源项目"></a>参考开源项目</h3><ul>
+<li><a href="https://github.com/eventflow/EventFlow" target="_blank" rel="noopener">EventFlow</a></li>
+<li><a href="https://github.com/NEventStore/NEventStore" target="_blank" rel="noopener">NEventStore</a></li>
 <li><a href="https://github.com/nopSolutions/nopCommerce" target="_blank" rel="noopener">NopCommerce</a></li>
 <li><a href="https://github.com/simplcommerce/SimplCommerce" target="_blank" rel="noopener">SimplCommerce</a></li>
 <li><a href="https://github.com/EduardoPires/EquinoxProject" target="_blank" rel="noopener">EquinoxProject</a></li>
@@ -272,7 +296,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/NET-Core/">.NET Core</a>, <a class="has-link-grey -link" href="/tags/ASP-NET-Core/">ASP.NET Core</a>, <a class="has-link-grey -link" href="/tags/Angular/">Angular</a>, <a class="has-link-grey -link" href="/tags/Blazor/">Blazor</a>, <a class="has-link-grey -link" href="/tags/CQRS/">CQRS</a>, <a class="has-link-grey -link" href="/tags/DDD/">DDD</a>, <a class="has-link-grey -link" href="/tags/React/">React</a>, <a class="has-link-grey -link" href="/tags/TDD/">TDD</a>, <a class="has-link-grey -link" href="/tags/Vue/">Vue</a>, <a class="has-link-grey -link" href="/tags/gRPC/">gRPC</a>
+                    <a class="has-link-grey -link" href="/tags/NET-Core/">.NET Core</a>, <a class="has-link-grey -link" href="/tags/ASP-NET-Core/">ASP.NET Core</a>, <a class="has-link-grey -link" href="/tags/Angular-js/">Angular.js</a>, <a class="has-link-grey -link" href="/tags/Blazor/">Blazor</a>, <a class="has-link-grey -link" href="/tags/CQRS/">CQRS</a>, <a class="has-link-grey -link" href="/tags/DDD/">DDD</a>, <a class="has-link-grey -link" href="/tags/React-js/">React.js</a>, <a class="has-link-grey -link" href="/tags/TDD/">TDD</a>, <a class="has-link-grey -link" href="/tags/Vue-js/">Vue.js</a>, <a class="has-link-grey -link" href="/tags/gRPC/">gRPC</a>
                 </div>
             </div>
         </div>
@@ -439,7 +463,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        18
                     </p>
                 </div>
             </div>
@@ -604,7 +628,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/NET/" style="font-size: 10px;">.NET</a> <a href="/tags/NET-Core/" style="font-size: 10px;">.NET Core</a> <a href="/tags/ASP-NET-Core/" style="font-size: 10px;">ASP.NET Core</a> <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/Blazor/" style="font-size: 10px;">Blazor</a> <a href="/tags/CQRS/" style="font-size: 10px;">CQRS</a> <a href="/tags/DDD/" style="font-size: 10px;">DDD</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/React-js/" style="font-size: 10px;">React.js</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/gRPC/" style="font-size: 10px;">gRPC</a> <a href="/tags/人生/" style="font-size: 10px;">人生</a> <a href="/tags/左撇子人生/" style="font-size: 10px;">左撇子人生</a> <a href="/tags/文章收藏/" style="font-size: 10px;">文章收藏</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/网站推荐/" style="font-size: 10px;">网站推荐</a> <a href="/tags/语录收藏/" style="font-size: 10px;">语录收藏</a>
+        <a href="/tags/NET/" style="font-size: 10px;">.NET</a> <a href="/tags/NET-Core/" style="font-size: 10px;">.NET Core</a> <a href="/tags/ASP-NET-Core/" style="font-size: 10px;">ASP.NET Core</a> <a href="/tags/Angular-js/" style="font-size: 10px;">Angular.js</a> <a href="/tags/Blazor/" style="font-size: 10px;">Blazor</a> <a href="/tags/CQRS/" style="font-size: 10px;">CQRS</a> <a href="/tags/DDD/" style="font-size: 10px;">DDD</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React-js/" style="font-size: 20px;">React.js</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/Vue-js/" style="font-size: 10px;">Vue.js</a> <a href="/tags/gRPC/" style="font-size: 10px;">gRPC</a> <a href="/tags/人生/" style="font-size: 10px;">人生</a> <a href="/tags/左撇子人生/" style="font-size: 10px;">左撇子人生</a> <a href="/tags/文章收藏/" style="font-size: 10px;">文章收藏</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/网站推荐/" style="font-size: 10px;">网站推荐</a> <a href="/tags/语录收藏/" style="font-size: 10px;">语录收藏</a>
     </div>
 </div>
 
@@ -816,8 +840,8 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Angular/">
-                        <span class="tag">Angular</span>
+                    <a class="tags has-addons" href="/tags/Angular-js/">
+                        <span class="tag">Angular.js</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -851,16 +875,9 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/React/">
-                        <span class="tag">React</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/React-js/">
                         <span class="tag">React.js</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -872,8 +889,8 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Vue/">
-                        <span class="tag">Vue</span>
+                    <a class="tags has-addons" href="/tags/Vue-js/">
+                        <span class="tag">Vue.js</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1147,8 +1164,8 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Angular/">
-                        <span class="tag">Angular</span>
+                    <a class="tags has-addons" href="/tags/Angular-js/">
+                        <span class="tag">Angular.js</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1182,16 +1199,9 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/React/">
-                        <span class="tag">React</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/React-js/">
                         <span class="tag">React.js</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1203,8 +1213,8 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Vue/">
-                        <span class="tag">Vue</span>
+                    <a class="tags has-addons" href="/tags/Vue-js/">
+                        <span class="tag">Vue.js</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
