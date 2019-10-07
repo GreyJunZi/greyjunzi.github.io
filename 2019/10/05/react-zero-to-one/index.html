@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>React.js - PseudoJunZi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="一、什么是 React？React 起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源。 React 拥有 声明式、组件化，一次学习随处编写等特点。 React 应用的核心是组件，组件实际上是一段用户界面的代码， 我们将创建一组独立、可重用的组件来组合成复杂的用户界面，每个 react 程序至少有一个组件也就是 root 根组件，这个组件代表">
+<meta name="keywords" content="React.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React.js">
+<meta property="og:url" content="https://PseudoJunZi.github.io/2019/10/05/react-zero-to-one/index.html">
+<meta property="og:site_name" content="PseudoJunZi">
+<meta property="og:description" content="一、什么是 React？React 起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源。 React 拥有 声明式、组件化，一次学习随处编写等特点。 React 应用的核心是组件，组件实际上是一段用户界面的代码， 我们将创建一组独立、可重用的组件来组合成复杂的用户界面，每个 react 程序至少有一个组件也就是 root 根组件，这个组件代表">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://pseudojunzi.github.io/gallery/Technology/ProgrammingLanguage/ReactJS/logo512.png">
+<meta property="og:updated_time" content="2019-10-06T17:05:55.862Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React.js">
+<meta name="twitter:description" content="一、什么是 React？React 起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源。 React 拥有 声明式、组件化，一次学习随处编写等特点。 React 应用的核心是组件，组件实际上是一段用户界面的代码， 我们将创建一组独立、可重用的组件来组合成复杂的用户界面，每个 react 程序至少有一个组件也就是 root 根组件，这个组件代表">
+<meta name="twitter:image" content="https://pseudojunzi.github.io/gallery/Technology/ProgrammingLanguage/ReactJS/logo512.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="React.js" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/PseudoJunZi">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="/gallery/Technology/ProgrammingLanguage/ReactJS/logo512.png" alt="React.js">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-05T03:51:55.000Z">2019-10-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/前端/">前端</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 小时 读完 (大约 6784 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                React.js
+            
+        </h1>
+        <div class="content">
+            <h2 id="一、什么是-React？"><a href="#一、什么是-React？" class="headerlink" title="一、什么是 React？"></a>一、什么是 React？</h2><p>React 起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源。</p>
+<p>React 拥有 声明式、组件化，一次学习随处编写等特点。</p>
+<p>React 应用的核心是组件，组件实际上是一段用户界面的代码， 我们将创建一组独立、可重用的组件来组合成复杂的用户界面，每个 react 程序至少有一个组件也就是 root 根组件，这个组件代表了整个程序，并且包含了很多的子组件。</p>
+<a id="more"></a>
+<p>React 使用渲染方法 render() 来渲染元素，也就是在 JavaScript 中对于的 DOM 元素，react 在内存中保持着一个轻量级的 DOM 元素树，也就是我们常说的虚拟 DOM，当我们改变一个组件的状态时，我们就得到了一个新的 react 元素，react 会将之前的组件和子组件进行比较，对比差异后更新浏览器中的 DOM，以确保信息保持同步。</p>
+<p>在使用 React 创建程序时不同于传统的 JavaScript 库比如 jQuery，我们不直接操作浏览器的真实 DOM 元素，我们不必为了捕获 DOM 元素写代码，然后处理 DOM 的请求，而是只需要简单的改变组件的状态，之后 react 将会自动检测并修改 DOM 以同步状态，这也就是为何这个库称为 <strong>React</strong> (反应)，因为当我们状态改变的时候，react 是真的’反应过来’状态已经改变，并且去更新 DOM。</p>
+<p>我们经常会被问到一个问题是关于 Angular 与 React 的，它们都是基于组件逻辑的架构，但不同的是 Angular 是一个框架，或者说是一个完整的解决方案。而 React 只是只是一个库，只关注显示部分的东西，并且确保视图始终同步，所以 react 需要学习的接口很少，我们为了实现目标还要借助其他的库，比如 Routing 或处理 HTTP 请求，这相比 Angular，我们要自由很多我们可以选择自己喜欢的库。</p>
+<h2 id="二、开发环境"><a href="#二、开发环境" class="headerlink" title="二、开发环境"></a>二、开发环境</h2><p>请先确保您安装了较新版本的 <strong><a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a></strong>，我们不会用到 Node.js 但会使用内置工具也就是包管理工具 npm,来安装第三方库。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 查看Node.js版本</span><br><span class="line">node -v</span><br><span class="line"></span><br><span class="line"># 查看npm版本</span><br><span class="line">npm -v</span><br><span class="line"></span><br><span class="line"># 更新npm版本</span><br><span class="line">npm install -g npm</span><br></pre></td></tr></table></figure>
+<p>我们先来安装 <code>create-react-app</code> 脚手架工具类库来创建 react 项目。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#  npm 是我们要执行的包管理工具</span><br><span class="line">#  i 代表 install 安装的意思</span><br><span class="line"># -g 代表 global 全局的意思</span><br><span class="line">#  create-react-app 是我们要安装的包</span><br><span class="line">npm i -g create-react-app</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果是 Mac 或 Linux 系统需要配置权限，在前面添加 <strong>sudo</strong> 关键字会使命令在管理员权限下运行</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm i -g create-react-app</span><br></pre></td></tr></table></figure>
+<p>我在此使用微软的 <strong><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a></strong> 编辑器来进行开发，因为它是一个漂亮的轻量级和跨平台的编辑器。我将要安装两个扩展，这样开发起来比较方便。</p>
+<p>首先是 <code>Simple React Snippets</code> 是由 <strong>Burke Holland</strong> 开发的，这个扩展已经有 345,580 安装了，是个很受欢迎的扩展，安装完毕后需要重启 VS Code。</p>
+<p>下一个是 <code>Prettier - Code formatter</code> 是由 <strong>Esben Petersen</strong> 开发的，这个扩展已经有 13,842,180 安装了，我们使用这个扩展来进行格式化我们的代码，我们可以开启保存时格式化的设置，当我们保存时这个扩展将自动格式化你的代码。我们打开 <strong>文件</strong> -&gt; <strong>首选项</strong> -&gt; <strong>设置</strong> 或者直接 <code>ctrl + ,</code> 打开设置页面，我们可以搜索 <strong>formatOnSave</strong> 或者在 <strong>文本编辑器</strong> -&gt; <strong>正在格式化</strong> 中的 <strong>Format On Save</strong> 项勾选之后，就可开启保存时自动格式化的功能。使用 <strong>Prettier - Code formatter</strong> 插件时默认会将单引号转换为双引号，可在根目录中 创建 <code>.prettierrc.json</code> 文件将 <code>singleQuoto</code> 设为 <code>true</code>，即可将双引号改为单引号，<code>semi</code> 改为 <code>false</code> 会将多余的分号去掉。</p>
+<h2 id="三、第一个-React-应用"><a href="#三、第一个-React-应用" class="headerlink" title="三、第一个 React 应用"></a>三、第一个 React 应用</h2><p>我们使用脚手架创建一个 React 应用程序，我们在控制台中输入 <code>create-react-app</code> 然后设置一个程序的名称。这将会安装 react，并安装与之相关的第三方库，首先会安装一个轻量级的开发服务器 <code>Development Server</code>，然后打包代码的 <code>Webpack</code>，最后是转译器 <code>Babel</code>可以转换我们的代码，还有一些其他的工具。所以在使用工具创建 react 程序的时候，不需要任何配置，所有的设置都配置好的了 <code>ZERO-CONFIG SETUP</code>，但是如果你在生产环境中想自己配置程序，你可以通过 <code>npm run eject</code> 来实现。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create-react-app react-app</span><br></pre></td></tr></table></figure>
+<p>创建好项目之后，我们可以使用以下命令来对我们的项目进行管理。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Starts the development server.</span><br><span class="line">npm start</span><br><span class="line"></span><br><span class="line"># Bundles the app into static files for production.</span><br><span class="line">npm run build</span><br><span class="line"></span><br><span class="line"># Starts the test runner.</span><br><span class="line">npm test</span><br><span class="line"></span><br><span class="line"># Removes this tool and copies build dependencies, configuration files and scripts into the app directionary. If you do this, you can't go back!</span><br><span class="line">npm run eject</span><br></pre></td></tr></table></figure>
+<p>首先进入我们创建好的项目的文件夹中，然后在控制台输入 <code>npm start</code> 运行我们的项目。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 进入 react-app 文件夹</span><br><span class="line">cd react-app</span><br><span class="line"></span><br><span class="line"># 启动项目</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<p>项目会在本机开启 3000 端口号运行我们的应用程序，并自动打开默认浏览器，我们的第一个 React 应用程序就建立好了。</p>
+<p>我们回到 VS Code 中看到项目的目录结构中，有三个文件夹 分别是 node_modules、public、src.</p>
+<p><code>node_modules</code> 这个文件夹里面是所有的模块，包括 react 本身。这个文件夹我们不需要关心。</p>
+<p><code>public</code> 这个文件夹是可公共访问程序的文件夹，里面包含图标、首页、mainfest 文件。<code>index.html</code> 文件中的 <code>&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</code> 这个标签是我们的 react 程序的容器，所有组件呈现的地方。</p>
+<p><code>src</code> 这个文件夹是主要的源代码文件夹，里面有个基本的组件也就是 <strong>App</strong> 组件。我们打开 <code>App.js</code>文件可以看到里面使用了一些<strong>ES6</strong>语法。</p>
+<blockquote>
+<p>ES6: 全称是 ECMAScript6.0，ECMAScript 是一种由 ECMA 国际（European Computer Manufacturers Association）通过 ECMA-262 标准化的脚本程序设计语言，可以理解为是 JavaScript 的一个标准。</p>
+</blockquote>
+<p>我们从零开始，将 <strong>src</strong> 文件夹下的所有文件删除，然后在 <strong>src</strong> 文件夹下新建一个 <code>index.js</code> 文件，编写以下代码。</p>
+<figure class="highlight jsx hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// import 后面是我们要导入的对象名称，from 后面是模块名称</span></span><br><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">"react-dom"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 定义一个element常量，并且赋值为一个JSX代码段</span></span><br><span class="line"><span class="hljs-keyword">const</span> element = &lt;h1&gt;Hello World&lt;/h1&gt;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 在真实DOM中渲染元素需要调用ReactDOM中的render方法</span></span><br><span class="line"><span class="hljs-comment">// 第一个参数是我们传入的想要渲染的元素</span></span><br><span class="line"><span class="hljs-comment">// 第二个参数是我们想要在哪里渲染这个元素。在index.html文件中有个root容器标签，我们通过id名root得到这个元素</span></span><br><span class="line"><span class="hljs-comment">// 这个ReactDOM方法已经得到了真实DOM元素的引用，然后把element元素渲染到那个引用当中</span></span><br><span class="line">ReactDOM.render(element, <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"root"</span>));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当我们保存时这个程序会自动重启，不需要回到浏览器手动刷新，这就是我们常说的 <strong>实时模块重载</strong></p>
+</blockquote>
+<h2 id="四、ES6-基本语法"><a href="#四、ES6-基本语法" class="headerlink" title="四、ES6 基本语法"></a>四、ES6 基本语法</h2><p>在我们开始真正学习 React 之前，我们先要掌握一些 ES6 的基本知识。</p>
+<blockquote>
+<ul>
+<li>变量与常量的关键字(<code>var</code>、<code>let</code>、<code>const</code>)</li>
+<li>对象(<code>Objects</code>)</li>
+<li>this 关键字(<code>The this keyword</code>)</li>
+<li>箭头函数(<code>Arrow Functions</code>)</li>
+<li>对象解构(<code>Object Destructuring</code>)</li>
+<li>展开操作符(<code>Spread Operator</code>)</li>
+<li>类(<code>Classes</code>)</li>
+<li>模块化(<code>Modules</code>)</li>
+</ul>
+</blockquote>
+<p>如果您对 ES6 的知识已经足够掌握，请跳过第四部分，直接从第五部分开始看。</p>
+<h3 id="Ⅰ-let-vs-var-vs-const"><a href="#Ⅰ-let-vs-var-vs-const" class="headerlink" title="Ⅰ. let vs var vs const"></a>Ⅰ. <code>let</code> vs <code>var</code> vs <code>const</code></h3><p>我们先要说一下创建变量和常量的关键字，我们一般在定义变量时经常会使用 var 关键字，但是 var 关键字有一些小问题。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">sayHello();</span><br></pre></td></tr></table></figure>
+<p>例如上面的代码在循环的时候定义的变量 i，按理来说 i 应该只是在 for 代码块内部可以被访问的，但是如果我在循环的下边打印 i，就会发现 i 这个变量还是可以被访问的。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(i);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 此处会输出5，因为i在循环到第5次的时候i在最后又进行了+1操作，到第六次循环i已经不再小于5了，所以循环就跳出了</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line">sayHello();</span><br></pre></td></tr></table></figure>
+<p>这个问题在 ES6 或者说 ECMAScript6，也就是 ECMAScript 2015 当中，我们获得了一个新的变量关键字 <code>let</code>。<br><code>let</code> 就是来解决这个状况的，当使用 <code>let</code> 来定义变量的时候，这个变量只能在被定义的代码块内部被访问。我们来试验一下。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(i);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 此处会输出5，因为i在循环到第5次的时候i在最后又进行了+1操作，到第六次循环i已经不再小于5了，所以循环就跳出了</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line">sayHello();</span><br></pre></td></tr></table></figure>
+<p>程序在执行到第 6 行时会报一个 i 未被定义的错误，<code>Line 6: &#39;i&#39; is not defined no-undef</code>，这个足以证明 <code>let</code> 关键字的作用域是只可能在作用域范围内部才可以使用。</p>
+<p>在 ES6 中还有一个关键字 <code>const</code>，我们使用 <code>const</code> 来定义常量，它与 <code>let</code> 类似，<code>const</code> 的作用域也是块，所以 <code>const</code> 定义的常量只能在定义它的块中可以访问。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 定义常量x并赋值为1</span></span><br><span class="line"><span class="hljs-keyword">const</span> x = <span class="hljs-number">1</span>;</span><br><span class="line"><span class="hljs-comment">//为常量x重新赋值为2</span></span><br><span class="line">x = <span class="hljs-number">2</span>;</span><br></pre></td></tr></table></figure>
+<p>在执行这段代码的时候将会报错，<code>Syntax error: &quot;x&quot; is read-only</code> 我们可以看到 <code>x</code> 是只读的，换句话说，如果用 <code>const</code> 定义一个常量，这个常量就不能被再次赋值，它不能改了所以对比变量它叫常量。</p>
+<blockquote>
+<p>注意：<code>const</code> 并不是不可改变的</p>
+</blockquote>
+<blockquote>
+<p>总结：当以 <code>var</code> 来定义变量的时候作用域是函数，当以 <code>let</code> 来定义变量的时候作用域是代码块，当以 <code>const</code>来定义常量的时候作用域也是代码块，所以我们在编写代码的时候可以用 <code>let</code> 来定义变量，除非有十足的理由使用 <code>var</code>，否则我们推荐用 <code>const</code> 和 <code>let</code> 取而代之。</p>
+</blockquote>
+<h3 id="Ⅱ-Objects"><a href="#Ⅱ-Objects" class="headerlink" title="Ⅱ. Objects"></a>Ⅱ. <code>Objects</code></h3><p>在 JavaScript 中对象是一组键值对。在 JavaScript 的 OOP（面向对象编程）中，“键”对应的值是函数时我们称之为方法，<br>在 ES6 的语法中，我们在对象中定义的方法可以不需要写冒号和 function 关键字。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="hljs-string">"React"</span>,</span><br><span class="line">  walk: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"walk"</span>);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// ES6语法，简化了在对象中的方法声明</span></span><br><span class="line">  talk() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"talk"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在 ES6 中，有两种可以访问对象成员的方法。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//第一种是 [点操作符] 直接 对象.属性 或 对象.方法 就可以访问对象成员。</span></span><br><span class="line">person.name;</span><br><span class="line">person.walk();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//第二种是使用中括号然后传入字符串去访问属性或方法，这样我们可以重新给成员赋值</span></span><br><span class="line">person[<span class="hljs-string">"name"</span>] = <span class="hljs-string">"ReactZeroToOne"</span>;</span><br><span class="line">person[<span class="hljs-string">"talk"</span>]();</span><br></pre></td></tr></table></figure>
+<h3 id="Ⅲ-this"><a href="#Ⅲ-this" class="headerlink" title="Ⅲ. this"></a>Ⅲ. <code>this</code></h3><p>我们先创建一个对象里面定义一个方法在内部调用 <code>this</code> 关键字，在 js 中 <code>this</code> 的表现行为和 C#或 Java 不太一样，在 js 中，this 总是返回一个当前对象的引用。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="hljs-string">"React"</span>,</span><br><span class="line">  walk() &#123;</span><br><span class="line">    <span class="hljs-comment">// 输出 this</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 调用talk方法，this会输出 person 对象</span></span><br><span class="line">person.walk();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//定义常量，赋值为 person 的 walk 成员，这里没有调用walk方法，只是得到了它的引用。</span></span><br><span class="line"><span class="hljs-keyword">const</span> walk = person.walk;</span><br><span class="line"><span class="hljs-comment">//得到的是person对象里的walk方法</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(walk);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//但是调用walk方法的时候输出的结果却是 undefined</span></span><br><span class="line">walk();</span><br></pre></td></tr></table></figure>
+<p>this 的取值，取决于函数是如何被调用的，如果你使用的对象的形式是调用方法，this 永远返回这个对象。但是如果使用单独函数的方式调用，this 这个时候指向的是浏览器的全局对象，也就是 <code>window</code></p>
+<p>在 js 中函数也是对象，在 person.walk 的时候实际上是一个对象，我们可以不信的话可以在 person.walk 后面加个点就可以看到它的成员了，里面有个 bind 函数可以用它将函数绑在一个对象上。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="hljs-string">"React"</span>,</span><br><span class="line">  walk() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">person.walk();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 将 person.walk 绑定到 person 对象上</span></span><br><span class="line"><span class="hljs-comment">// 使用bind方法可以永久的设置this引用</span></span><br><span class="line"><span class="hljs-keyword">const</span> walk = person.walk.bind(person);</span><br><span class="line"><span class="hljs-comment">// 这时调用walk函数的时候，就会看到this指向了person对象</span></span><br><span class="line">walk();</span><br></pre></td></tr></table></figure>
+<h3 id="Ⅳ-Arrow-Functions-箭头函数"><a href="#Ⅳ-Arrow-Functions-箭头函数" class="headerlink" title="Ⅳ. Arrow Functions (箭头函数)"></a>Ⅳ. <code>Arrow Functions</code> (箭头函数)</h3><p>我们先来看看普通函数声明和 ES6 语法的函数声明对比。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 普通函数声明</span></span><br><span class="line"><span class="hljs-keyword">const</span> square = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">number</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> number * number;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 箭头函数声明</span></span><br><span class="line"><span class="hljs-keyword">const</span> cube = <span class="hljs-function"><span class="hljs-params">number</span> =&gt;</span> number * number * number;</span><br></pre></td></tr></table></figure>
+<p>我们可以看到使用箭头函数声明的函数代码更加的简洁，不需要写 function 关键字，如果函数内只有一行代码连 return 都不需要写。</p>
+<p>我们可以再看一个例子，就可以很明显的对比出箭头函数更加的简洁。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> jobs = [</span><br><span class="line">  &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">isActived</span>: <span class="hljs-literal">true</span> &#125;,</span><br><span class="line">  &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">isActived</span>: <span class="hljs-literal">false</span> &#125;,</span><br><span class="line">  &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">isActived</span>: <span class="hljs-literal">true</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 使用数组的filter函数，这个函数会将数据遍历并将每条数据传入这个匿名函数中，这个函数会根据筛选的条件过滤并返回结果</span></span><br><span class="line"><span class="hljs-comment">// 这里的筛选条件是只筛选出 isActived 为 true 的数据</span></span><br><span class="line"><span class="hljs-keyword">const</span> activeJobs = jobs.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">job</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> job.isActived;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 我们可以使用箭头函数很好的简化这个函数</span></span><br><span class="line"><span class="hljs-keyword">const</span> activeJobs2 = jobs.filter(<span class="hljs-function"><span class="hljs-params">job</span> =&gt;</span> job.isActived);</span><br></pre></td></tr></table></figure>
+<p>我们在箭头函数中定义的 this 和普通函数中的 this 也不太一样。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> person = &#123;</span><br><span class="line">  talk() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"this"</span>, <span class="hljs-keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">person.talk(); <span class="hljs-comment">// 输出 person 对象</span></span><br></pre></td></tr></table></figure>
+<p>我们在调用 person 对象的 talk 方法是返回的结果是这个 person 对象，但是如果我们延迟输出这个 this 得到的结果是什么呢？</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> person = &#123;</span><br><span class="line">  talk() &#123;</span><br><span class="line">    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"this"</span>, <span class="hljs-keyword">this</span>);</span><br><span class="line">    &#125;, <span class="hljs-number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">person.talk(); <span class="hljs-comment">// 输出 window 全局对象</span></span><br></pre></td></tr></table></figure>
+<p>这里我们在调用 person 对象的 talk 函数时，输出的是 window 对象，而不是 person 对象。原因是这个传入的匿名函数不属于任何对象，它与 person 对象的 talk 方法是不同的，它是一个孤立的函数，我们之前说以一个孤立函数的方式调用函数的时候，默认 this 会返回 window 全局对象，在之前我们没得到 window 而是未定义，是因为之前我们调用的时候严格模式介入了，并将 this 设置为未定义。但是现在这种情况比较特殊，它是回调函数，严格模式并不会重新设定 this 是 window 的行为。</p>
+<p>在以前如果我们想解决这种问题，需要这样来写。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> person = &#123;</span><br><span class="line">  talk() &#123;</span><br><span class="line">    <span class="hljs-comment">// 我们声明一个变量来保存此时的this</span></span><br><span class="line">    <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;</span><br><span class="line">    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">      <span class="hljs-comment">// 在回调函数中调用self</span></span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"self"</span>, self);</span><br><span class="line">    &#125;, <span class="hljs-number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">person.talk(); <span class="hljs-comment">// 输出 person 对象</span></span><br></pre></td></tr></table></figure>
+<p>我们可以看到这时的 self 指向的时 person 对象了。这是以前的一些写法，现在有了箭头函数就不用这样了。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> person = &#123;</span><br><span class="line">  talk() &#123;</span><br><span class="line">    <span class="hljs-comment">// 将匿名函数修改为箭头函数</span></span><br><span class="line">    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"this"</span>, <span class="hljs-keyword">this</span>);</span><br><span class="line">    &#125;, <span class="hljs-number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">person.talk(); <span class="hljs-comment">//输出 person 对象</span></span><br></pre></td></tr></table></figure>
+<p>因为箭头函数不重新绑定 this，使用箭头函数替换匿名回调函数时会继承 this 设置，所以输出的还是 person 对象。</p>
+<h3 id="Ⅴ-Object-Destructuring-对象解构"><a href="#Ⅴ-Object-Destructuring-对象解构" class="headerlink" title="Ⅴ. Object Destructuring 对象解构"></a>Ⅴ. <code>Object Destructuring</code> 对象解构</h3><p>在 ES6 语法之前如果我们想要得到一个对象里面的成员会需要这样来写。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> address = &#123;</span><br><span class="line">  street: <span class="hljs-string">""</span>,</span><br><span class="line">  city: <span class="hljs-string">""</span>,</span><br><span class="line">  country: <span class="hljs-string">""</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-keyword">const</span> street = address.street;</span><br><span class="line"><span class="hljs-keyword">const</span> city = address.city;</span><br><span class="line"><span class="hljs-keyword">const</span> country = address.country;</span><br></pre></td></tr></table></figure>
+<p>声明每个对立的变量对于一个属性，这段代码的问题是我们重复的使用 <code>address.</code> 这样的语法。<code>解构</code>就解决了这样的问题。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> address = &#123;</span><br><span class="line">  street: <span class="hljs-string">""</span>,</span><br><span class="line">  city: <span class="hljs-string">""</span>,</span><br><span class="line">  country: <span class="hljs-string">""</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> &#123; street, city, country &#125; = address;</span><br></pre></td></tr></table></figure>
+<p>这样其实就是把 address 对象对应的属性取出来放在 street 常量中，我们不必把所有的属性全部取出来，如果只想取 <code>street</code> 就把其他的删掉就可以了。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> &#123; street &#125; = address;</span><br></pre></td></tr></table></figure>
+<p>如果我们想要给变量起别名可以使用冒号 <code>:</code> 这样我们就会得到一个新的常量 <code>st</code>。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 冒号前对应的是 address 的属性，冒号后是常量名</span></span><br><span class="line"><span class="hljs-keyword">const</span> &#123; <span class="hljs-attr">street</span>: st &#125; = address;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ES6 中的 <code>Object Destructuring</code> 中文被译为 <code>解构</code> 或 <code>析构</code></p>
+</blockquote>
+<h3 id="Ⅵ-Spread-Operator-展开操作符"><a href="#Ⅵ-Spread-Operator-展开操作符" class="headerlink" title="Ⅵ. Spread Operator (展开操作符)"></a>Ⅵ. <code>Spread Operator</code> (展开操作符)</h3><p>在 ES6 的语法中还有一种常见的写法就是 <code>展开操作符</code>，它的语法是使用 <code>...</code> 三个点，比如我们想要合并两个数组，可以这样写。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> first = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];</span><br><span class="line"><span class="hljs-keyword">const</span> second = [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 使用数组的 concat 函数拼接两个数组</span></span><br><span class="line"><span class="hljs-keyword">const</span> combined = first.concat(second);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 使用展开操作符来拼接数组</span></span><br><span class="line"><span class="hljs-keyword">const</span> combined2 = [...first, ...second];</span><br></pre></td></tr></table></figure>
+<p>我们可能会疑问了，这不是差不多嘛？好处在哪里？如果我们想在 <code>first</code> 之前或之后添加一个多个元素，就可以看出展开操作符的好处了。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> combined3 = [<span class="hljs-string">"a"</span>, ...first, <span class="hljs-string">"b"</span>, ...second, <span class="hljs-string">"c"</span>];</span><br></pre></td></tr></table></figure>
+<p>使用展开操作符也可以轻松组合对象。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> one = &#123; <span class="hljs-attr">first</span>: <span class="hljs-string">"a"</span> &#125;;</span><br><span class="line"><span class="hljs-keyword">const</span> two = &#123; <span class="hljs-attr">second</span>: <span class="hljs-string">"b"</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 组合one、two、和其他属性</span></span><br><span class="line"><span class="hljs-comment">// 结果是：&#123; first:"a", second:"b", third:"c" &#125;</span></span><br><span class="line"><span class="hljs-keyword">const</span> combined = &#123; ...one, ...two, <span class="hljs-attr">third</span>: <span class="hljs-string">"c"</span> &#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Ⅶ-Classes-类"><a href="#Ⅶ-Classes-类" class="headerlink" title="Ⅶ. Classes (类)"></a>Ⅶ. <code>Classes</code> (类)</h3><p>类可以帮我们实现代码复用，我们可以通过构造函数 <code>constructor</code> 来传参，这里的 this 永远指向的是 Person 这个类，我们在创建一个类的实例的时候需要使用操作符 <code>new</code> 来实例化它。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  walk() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"walk"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 实例化 Person 类，传入参数 name</span></span><br><span class="line"><span class="hljs-keyword">const</span> person = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"React"</span>);</span><br></pre></td></tr></table></figure>
+<p>在 js 中页面面向对象(OOP)，其中<code>继承(inheritance)</code>也是比较重要的一部分，继承之后子类可以调用父类当中的公开成员及函数。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  walk() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"walk"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 使用 extends 关键字继承 Person 类</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Teacher</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(name, degree) &#123;</span><br><span class="line">    <span class="hljs-comment">// super 关键字调用父类的构造器，传入参数name，如果不写super就会报错</span></span><br><span class="line">    <span class="hljs-keyword">super</span>(name);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">this</span>.degree = degree;</span><br><span class="line">  &#125;</span><br><span class="line">  teach() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"teach"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> teacher = <span class="hljs-keyword">new</span> Teacher(<span class="hljs-string">"React"</span>, <span class="hljs-string">"MSC"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="Ⅷ-Modules-模块"><a href="#Ⅷ-Modules-模块" class="headerlink" title="Ⅷ. Modules (模块)"></a>Ⅷ. <code>Modules</code> (模块)</h3><p>可以看到我们之前写的代码有些乱，因为我们在一个文件中定义了多个类，如果能把代码分割为若干个独立文件就好了，这就是我们说的模块化，将代码写在多个文件里，我们把这些叫做模块，在之前 JavaScript 中没有原生模块的概念，所以就诞生了很多第三方库，但是在 ES6 中已经有原生模块了。我们把这段代码进行模块化。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># person.js 文件</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 模块默认是私有的，也就是说这个类除了这个模块外都是不可见的，为了让其他的模块也可以使用，我们可以把它公开化</span></span><br><span class="line"><span class="hljs-comment">// 实现公开化的方法就是导出，在class关键字前加入 export 关键字就可实现导出，然后就可以在需要的地方导入就可以了</span></span><br><span class="line">expxort <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  walk() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"walk"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># teacher.js 文件</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 我们可以使用 import from 将想要导入的模块加载进来</span></span><br><span class="line"><span class="hljs-keyword">import</span> &#123; Person &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./person'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Teacher</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(name, degree) &#123;</span><br><span class="line">    <span class="hljs-keyword">super</span>(name);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">this</span>.degree = degree;</span><br><span class="line">  &#125;</span><br><span class="line">  teach() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"teach"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># index.js 文件</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> &#123; Teacher &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./teacher'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> teacher = <span class="hljs-keyword">new</span> Teacher(<span class="hljs-string">"React"</span>, <span class="hljs-string">"MSC"</span>);</span><br><span class="line">teacher.teach();</span><br></pre></td></tr></table></figure>
+<p>可以看到我们就将之前的代码拆分了到了三个文件里，然后在每个模块中使用 <code>export</code> 和 <code>import</code> 来进行模块的导出和导入的操作，也就实现了我们说的模块化。</p>
+<p>我们说在模块里定义的对象默认是私有的，如果不导出，外部是访问不到的，我们一般在模块中导出的不止仅仅只有一个对象，我们需要在每个需要导出的对象前面加入 <code>export</code> 这种方式我们称之为 <code>以名导出(Named Exports)</code> 因为所有要导出的对象都有名字，不同于以名导出还有一种 <code>默认导出(Default of Exports)</code> 的方式，通常只有一个对象需要导出的时候我们就可以使用默认导出。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># teacher.js 文件</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> &#123; Person &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./person'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 在 export 关键字的后面加入 default 关键字 声明这个类就是这个模块的默认导出对象</span></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Teacher</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(name, degree) &#123;</span><br><span class="line">    <span class="hljs-keyword">super</span>(name);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">this</span>.degree = degree;</span><br><span class="line">  &#125;</span><br><span class="line">  teach() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"teach"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># index.js 文件</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 在引入 Teacher 类的时候，因为这个类是默认对象所以不需要写大括号</span></span><br><span class="line"><span class="hljs-keyword">import</span> Teacher <span class="hljs-keyword">from</span> <span class="hljs-string">'./teacher'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> teacher = <span class="hljs-keyword">new</span> Teacher(<span class="hljs-string">"React"</span>, <span class="hljs-string">"MSC"</span>);</span><br><span class="line">teacher.teach();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>你可能会说，类不是对象。其实在 JavaScript 中类就是对象，因为类只是为了完成概念的函数的外皮，函数，我之前说过就是对象，所以在 JavaScript 中类技术上就是对象。</p>
+</blockquote>
+<p>我们可以在一个模块中既使用默认导出又使用以名导出的方式。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># teacher.js 文件</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> &#123; Person &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./person'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 以名导出</span></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">promote</span>(<span class="hljs-params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 默认导出</span></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Teacher</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(name, degree) &#123;</span><br><span class="line">    <span class="hljs-keyword">super</span>(name);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">this</span>.degree = degree;</span><br><span class="line">  &#125;</span><br><span class="line">  teach() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"teach"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># index.js 文件</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 在引入的时候，不写括号来接收默认导出的对象，使用大括号接收以名导出的对象</span></span><br><span class="line"><span class="hljs-keyword">import</span> Teacher, &#123; promote &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./teacher'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> teacher = <span class="hljs-keyword">new</span> Teacher(<span class="hljs-string">"React"</span>, <span class="hljs-string">"MSC"</span>);</span><br><span class="line">teacher.teach();</span><br></pre></td></tr></table></figure>
+<h2 id="五、第一个-React-组件"><a href="#五、第一个-React-组件" class="headerlink" title="五、第一个 React 组件"></a>五、第一个 React 组件</h2><p>我们在终端输入 <code>create-react-app</code> 命令，来创建 react 项目，项目名称叫做 <code>counter-app</code>，当然名称大家可以自定义。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create-react-app counter-app</span><br></pre></td></tr></table></figure>
+<p>工程建立好之后，进入 <code>counter-app</code> 文件夹，启动项目。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 进入 counter-app 文件夹</span><br><span class="line">cd .\counter-app\</span><br><span class="line"></span><br><span class="line"># 启动项目</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<p>我们先安装 <code>bootstrap</code> ，这个库是 <code>Twitter</code> 公司开发的 前端开源工具包，这个库是基于 HTML/CSS/JS 开发的响应式布局框架。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i bootstrap</span><br></pre></td></tr></table></figure>
+<p>我们回到 <strong>src</strong> 文件夹中的 <code>index.js</code> 文件中导入 bootstrap 框架。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">"react-dom"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> <span class="hljs-string">"./index.css"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">"./App"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> serviceWorker <span class="hljs-keyword">from</span> <span class="hljs-string">"./serviceWorker"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 引入bootstrap样式</span></span><br><span class="line"><span class="hljs-keyword">import</span> <span class="hljs-string">"bootstrap/dist/css/bootstrap.min.css"</span>;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(&lt;App /&gt;, document.getElementById("root"));</span><br><span class="line"></span><br><span class="line">// If you want your app to work offline and load faster, you can change</span><br><span class="line">// unregister() to register() below. Note this comes with some pitfalls.</span><br><span class="line">// Learn more about service workers: https://bit.ly/CRA-PWA</span><br><span class="line">serviceWorker.unregister();</span><br></pre></td></tr></table></figure>
+<p>回到浏览器我们可以看到页面的字体已经改变了。</p>
+<p>我们现在要创建组件，为了方便管理我们的组件我们把所有的组件都放在 <strong>src</strong> 文件夹下新创建的 <code>components</code> 文件夹中，然后在组件文件夹中创建一个新的文件 <code>counter.jsx</code> 命名时我们推荐使用(小)驼峰命名法，即第一个单词的首字母小写，其余单词的首字母大写。创建文件的后缀名我们也推荐使用 <code>.jsx</code> 而不是 <code>.js</code> 为了代码的完整性。</p>
+<blockquote>
+<p>jsx 全称 JavaScript XML，一种在 JavaScript 中构建标签的类似 XML 语法。增强 React 程序组件的可读性</p>
+</blockquote>
+<blockquote>
+<p>我们在 Visual Studio Code 中安装的 <code>Simple React Snippets</code> 扩展，输入一些缩写就可以帮我们快速输入代码。</p>
+</blockquote>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># counter.jsx</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Counter 类 继承自 React的 Component 类</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-comment">// jsx 语法</span></span><br><span class="line">    <span class="hljs-comment">// 它会让编译器调用 React.createElement 的方法</span></span><br><span class="line">    <span class="hljs-keyword">return</span> &lt;h1&gt;Hello World&lt;/h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 我们也可以这样来实现默认导出类</span></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Counter;</span><br></pre></td></tr></table></figure>
+<p>我们回到 <code>index.js</code> 文件中，导入我们创建的 <code>Counter</code> 组件</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 这个类是默认导出的所以不需要写大括号</span></span><br><span class="line"><span class="hljs-keyword">import</span> Counter <span class="hljs-keyword">from</span> <span class="hljs-string">"./components/counter"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 将原来使用的 &lt;App /&gt; 标签修改为 我们创建的 &lt;Counter /&gt; 组件</span></span><br><span class="line"><span class="hljs-comment">//ReactDOM.render(&lt;App /&gt;, document.getElementById("root"));</span></span><br><span class="line">ReactDOM.render(&lt;Counter /&gt;, document.getElementById("root"));</span><br></pre></td></tr></table></figure>
+<p>回到浏览器，就能看到 Counter 组件渲染的结果了。</p>
+<p>我们在组件中写 jsx 的语法的时候只能有一个顶级元素，jsx 语法会调用 React.createElement()方法来创建组件，如果有多个顶级元素 babel 不知道如何转译并告知 React 要创建什么元素，所以就会报错。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># counter.jsx</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-comment">// jsx语法报错，只能有一个顶级元素</span></span><br><span class="line">    <span class="hljs-keyword">return</span> &lt;h1&gt;Hello&lt;/h1&gt;&lt;h1&gt;World&lt;/h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Counter;</span><br></pre></td></tr></table></figure>
+<p>解决方案就是使用最外层元素用一个 div 标签宝珠它们，保证只有一个顶级元素即可。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># counter.jsx</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-comment">// 将所有的元素用div标签包含进来</span></span><br><span class="line">    <span class="hljs-comment">// 当有多行标签的时候，需要在外边用小括号括起来</span></span><br><span class="line">    <span class="hljs-keyword">return</span> (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &lt;h1&gt;Hello&lt;<span class="hljs-regexp">/h1&gt;</span></span><br><span class="line"><span class="hljs-regexp">          &lt;h1&gt;World&lt;/</span>h1&gt;</span><br><span class="line">        &lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    );</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">export default Counter;</span></span><br></pre></td></tr></table></figure>
+<p>如果我们不需要最外层的无意义 div 标签的话可以使用 <code>React.Fragment</code> 组件来替换 div 标签，这样在渲染元素的时候在根组件下面就会只渲染 <code>React.Fragment</code> 组件里面的内容了。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># counter.jsx</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> (</span><br><span class="line">        &lt;React.Fragment&gt;</span><br><span class="line">          &lt;h1&gt;Hello&lt;<span class="hljs-regexp">/h1&gt;</span></span><br><span class="line"><span class="hljs-regexp">          &lt;h1&gt;World&lt;/</span>h1&gt;</span><br><span class="line">        &lt;<span class="hljs-regexp">/React.Fragment&gt;</span></span><br><span class="line"><span class="hljs-regexp">    );</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">export default Counter;</span></span><br></pre></td></tr></table></figure>
+<p>我们可以使用 <code>state</code> 对象来进行组件的动态数据传入，使用大括号可以存放可计算的 js 表达式。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// state是react组件中一个特殊的属性，实际它包含了这个组件需要用到的数据</span></span><br><span class="line">  state = &#123;</span><br><span class="line">    count: <span class="hljs-number">0</span></span><br><span class="line">  &#125;;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;<span class="hljs-comment">/* this 指向当前类对象，在大括号也可以调用方法 */</span>&#125;</span><br><span class="line">        &lt;span&gt;&#123;formatCount()&#125;&lt;<span class="hljs-regexp">/span&gt;</span></span><br><span class="line"><span class="hljs-regexp">      &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  formatCount() &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> &#123; count &#125; = <span class="hljs-keyword">this</span>.state;</span><br><span class="line">    <span class="hljs-keyword">return</span> count === <span class="hljs-number">0</span> ? &lt;h1&gt;Zero&lt;/h1&gt; : count;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Counter;</span><br></pre></td></tr></table></figure>
+<p>比如我们可以添加一个图片，动态的设置 <code>src</code> 属性</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    imageUrl: <span class="hljs-string">""</span></span><br><span class="line">  &#125;;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;img src=&#123;<span class="hljs-keyword">this</span>.state.imageUrl&#125; /&gt;</span><br><span class="line">      &lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    );</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">export default Counter;</span></span><br></pre></td></tr></table></figure>
+<h2 id="六、React-组合组件"><a href="#六、React-组合组件" class="headerlink" title="六、React 组合组件"></a>六、React 组合组件</h2><h2 id="七、分页，过滤，排序"><a href="#七、分页，过滤，排序" class="headerlink" title="七、分页，过滤，排序"></a>七、分页，过滤，排序</h2><h2 id="八、"><a href="#八、" class="headerlink" title="八、"></a>八、</h2>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/React-js/">React.js</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/WeChat.png" alt="微信"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
+    <span class="icon is-small">
+        <i class="fab fa-paypal"></i>
+    </span>
+    <span>Paypal</span>
+</a>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
+    <input type="hidden" name="cmd" value="_donations">
+    <input type="hidden" name="business" value="PseudoJunZi@163.com">
+    <input type="hidden" name="currency_code" value="CNY">
+</form>
+
+                
+                
+<a class="button is-danger donate" href="https://www.patreon.com/" target="_blank">
+    <span class="icon is-small">
+        <i class="fab fa-patreon"></i>
+    </span>
+    <span>Patreon</span>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/06/english/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">英语</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/14/wintersolstice-1/">
+                <span class="level-item">冬至（一）</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '371e478923bff82fb6c6',
+        clientSecret: '37a842f76f41c3c2bf6969122217740abadb3680',
+        id: '164944d818c5390fab2b66cf0526e7a6',
+        repo: 'https://github.com/PseudoJunZi/PseudoJunZi.github.io.git',
+        owner: 'PseudoJunZi',
+        admin: ["PseudoJunZi"]
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/stamp.png" alt="PseudoJunZi">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        PseudoJunZi
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        20
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/PseudoJunZi" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/PseudoJunZi">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/PseudoJunZi" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PseudoJunZi</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/人生回顾/">
+            <span class="level-start">
+                <span class="level-item">人生回顾</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/人生回顾/自述/">
+            <span class="level-start">
+                <span class="level-item">自述</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/前端/">
+            <span class="level-start">
+                <span class="level-item">前端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/开源项目/">
+            <span class="level-start">
+                <span class="level-item">开源项目</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/技术分享/">
+            <span class="level-start">
+                <span class="level-item">技术分享</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/推荐/">
+            <span class="level-start">
+                <span class="level-item">推荐</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/收藏/">
+            <span class="level-start">
+                <span class="level-item">收藏</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/编程/">
+            <span class="level-start">
+                <span class="level-item">编程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/英语/">
+            <span class="level-start">
+                <span class="level-item">英语</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/NET/" style="font-size: 10px;">.NET</a> <a href="/tags/NET-Core/" style="font-size: 10px;">.NET Core</a> <a href="/tags/ASP-NET-Core/" style="font-size: 10px;">ASP.NET Core</a> <a href="/tags/Angular-js/" style="font-size: 10px;">Angular.js</a> <a href="/tags/Blazor/" style="font-size: 10px;">Blazor</a> <a href="/tags/CQRS/" style="font-size: 10px;">CQRS</a> <a href="/tags/DDD/" style="font-size: 10px;">DDD</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React-js/" style="font-size: 20px;">React.js</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/Vue-js/" style="font-size: 10px;">Vue.js</a> <a href="/tags/gRPC/" style="font-size: 10px;">gRPC</a> <a href="/tags/人生/" style="font-size: 10px;">人生</a> <a href="/tags/小知识/" style="font-size: 10px;">小知识</a> <a href="/tags/左撇子人生/" style="font-size: 10px;">左撇子人生</a> <a href="/tags/文章收藏/" style="font-size: 10px;">文章收藏</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/网站推荐/" style="font-size: 10px;">网站推荐</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/语录收藏/" style="font-size: 10px;">语录收藏</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/06/programming-knowledge/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/Blog/programming-knowledge/590493.jpeg" alt="编程小知识">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-06T06:54:25.000Z">2019-10-06</time></div>
+                    <a href="/2019/10/06/programming-knowledge/" class="has-link-black-ter is-size-6">编程小知识</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/编程/">编程</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/06/english/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/Blog/english/BZc9Ee1qo0.jpg" alt="英语">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-06T02:42:05.000Z">2019-10-06</time></div>
+                    <a href="/2019/10/06/english/" class="has-link-black-ter is-size-6">英语</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/英语/">英语</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/05/react-zero-to-one/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/Technology/ProgrammingLanguage/ReactJS/logo512.png" alt="React.js">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-05T03:51:55.000Z">2019-10-05</time></div>
+                    <a href="/2019/10/05/react-zero-to-one/" class="has-link-black-ter is-size-6">React.js</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/前端/">前端</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/14/wintersolstice-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/Blog/wintersolstice-1/winter.jpg" alt="冬至（一）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T02:45:22.000Z">2019-09-14</time></div>
+                    <a href="/2019/09/14/wintersolstice-1/" class="has-link-black-ter is-size-6">冬至（一）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/开源项目/">开源项目</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/10/quotations-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/Blog/quotations-1/beautiful-calm-clouds.jpg" alt="语录（一）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-10T11:04:36.000Z">2019-08-10</time></div>
+                    <a href="/2019/08/10/quotations-1/" class="has-link-black-ter is-size-6">语录（一）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/收藏/">收藏</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NET/">
+                        <span class="tag">.NET</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NET-Core/">
+                        <span class="tag">.NET Core</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ASP-NET-Core/">
+                        <span class="tag">ASP.NET Core</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Angular-js/">
+                        <span class="tag">Angular.js</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Blazor/">
+                        <span class="tag">Blazor</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CQRS/">
+                        <span class="tag">CQRS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DDD/">
+                        <span class="tag">DDD</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Node-js/">
+                        <span class="tag">Node.js</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/React-js/">
+                        <span class="tag">React.js</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TDD/">
+                        <span class="tag">TDD</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue-js/">
+                        <span class="tag">Vue.js</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gRPC/">
+                        <span class="tag">gRPC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/人生/">
+                        <span class="tag">人生</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/小知识/">
+                        <span class="tag">小知识</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/左撇子人生/">
+                        <span class="tag">左撇子人生</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/文章收藏/">
+                        <span class="tag">文章收藏</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/杂谈/">
+                        <span class="tag">杂谈</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/网站推荐/">
+                        <span class="tag">网站推荐</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/英语/">
+                        <span class="tag">英语</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/语录收藏/">
+                        <span class="tag">语录收藏</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/06/programming-knowledge/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/Blog/programming-knowledge/590493.jpeg" alt="编程小知识">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-06T06:54:25.000Z">2019-10-06</time></div>
+                    <a href="/2019/10/06/programming-knowledge/" class="has-link-black-ter is-size-6">编程小知识</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/编程/">编程</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/06/english/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/Blog/english/BZc9Ee1qo0.jpg" alt="英语">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-06T02:42:05.000Z">2019-10-06</time></div>
+                    <a href="/2019/10/06/english/" class="has-link-black-ter is-size-6">英语</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/英语/">英语</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/05/react-zero-to-one/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/Technology/ProgrammingLanguage/ReactJS/logo512.png" alt="React.js">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-05T03:51:55.000Z">2019-10-05</time></div>
+                    <a href="/2019/10/05/react-zero-to-one/" class="has-link-black-ter is-size-6">React.js</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/前端/">前端</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/14/wintersolstice-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/Blog/wintersolstice-1/winter.jpg" alt="冬至（一）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T02:45:22.000Z">2019-09-14</time></div>
+                    <a href="/2019/09/14/wintersolstice-1/" class="has-link-black-ter is-size-6">冬至（一）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/开源项目/">开源项目</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/10/quotations-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/Blog/quotations-1/beautiful-calm-clouds.jpg" alt="语录（一）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-10T11:04:36.000Z">2019-08-10</time></div>
+                    <a href="/2019/08/10/quotations-1/" class="has-link-black-ter is-size-6">语录（一）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/收藏/">收藏</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NET/">
+                        <span class="tag">.NET</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NET-Core/">
+                        <span class="tag">.NET Core</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ASP-NET-Core/">
+                        <span class="tag">ASP.NET Core</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Angular-js/">
+                        <span class="tag">Angular.js</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Blazor/">
+                        <span class="tag">Blazor</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CQRS/">
+                        <span class="tag">CQRS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DDD/">
+                        <span class="tag">DDD</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Node-js/">
+                        <span class="tag">Node.js</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/React-js/">
+                        <span class="tag">React.js</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TDD/">
+                        <span class="tag">TDD</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue-js/">
+                        <span class="tag">Vue.js</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gRPC/">
+                        <span class="tag">gRPC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/人生/">
+                        <span class="tag">人生</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/小知识/">
+                        <span class="tag">小知识</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/左撇子人生/">
+                        <span class="tag">左撇子人生</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/文章收藏/">
+                        <span class="tag">文章收藏</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/杂谈/">
+                        <span class="tag">杂谈</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/网站推荐/">
+                        <span class="tag">网站推荐</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/英语/">
+                        <span class="tag">英语</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/语录收藏/">
+                        <span class="tag">语录收藏</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="React.js" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 PseudoJunZi&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/PseudoJunZi">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
